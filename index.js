@@ -4,16 +4,41 @@ let random = rand[Math.floor(Math.random() * rand.length)];
 return random;
 }
 
-let player = computerPlay();
-let comp = computerPlay() ;
-let play = function(playerSelection, computerSelection){
-if(playerSelection == computerSelection){return "Draw ! "+playerSelection+" equals "+playerSelection;}
-else if(playerSelection == 'Rock' && computerSelection == 'Scissor'){return "You win ! "+playerSelection+" Beats "+computerSelection;}
-else if(playerSelection == 'Rock' && computerSelection == 'Paper'){return "You lose ! "+computerSelection+" Beats "+playerSelection;}
-else if(playerSelection == 'Scissor' && computerSelection == 'Paper'){return "You win ! "+playerSelection+" Beats "+computerSelection;}
-else if(playerSelection == 'Scissor' && computerSelection == 'Rock'){return "You lose ! "+computerSelection+" Beats "+playerSelection;}
-else if(playerSelection == 'Paper' && computerSelection == 'Rock'){return "You win ! "+playerSelection+" Beats "+computerSelection;}
-else{return "You lose ! "+computerSelection+" Beats "+playerSelection;}
+
+let playRound = function(playerSelection, computerSelection){
+playerSelection = playerSelection.toLowerCase();
+computerSelection = computerSelection.toLowerCase();
+if(playerSelection == 'rock' && computerSelection == 'scissor'){return true;}
+else if(playerSelection == 'rock' && computerSelection == 'paper'){return false;}
+else if(playerSelection == 'scissor' && computerSelection == 'paper'){return true;}
+else if(playerSelection == 'scissor' && computerSelection == 'rock'){return false;}
+else if(playerSelection == 'paper' && computerSelection == 'rock'){return true;}
+else{return false;}
 };
 
-console.log(play(player,comp));
+function game(){
+    let you = 0;
+    let computer = 0;
+    let rounds = 5;
+    for(let i = 0; i < rounds; i++)
+    {
+        let player = prompt('Enter Rock, Paper, Scissor:');
+        let comp = computerPlay();
+        if (player.toLowerCase() == comp.toLowerCase()){
+            console.log('Draw ! '+ player + " equals "+ comp);
+        }
+        else if(playRound(player, comp)){
+            ++you;
+            console.log('You win ! '+ player + " beats " + comp);
+        }
+        else{
+            ++computer;
+            console.log('You lose ! ' + comp + ' beats ' + player);
+        }
+    }
+    if(you == computer){console.log('Draw');}
+    else if(you > computer){console.log('You are the winner...');}
+    else {console.log('Computer wins ...');}
+
+}
+game();
