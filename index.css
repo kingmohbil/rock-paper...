@@ -1,17 +1,45 @@
+*{
+    border-sizing: border-box;
+}
+body{
+    height: 100vh;
+    margin:0;
+    background-color:#FBBC05;
+}
+.header,
+.footer{
+    display:flex;
+    color:#f9faf8;
+    padding: 16px;
+}
+.header{
+    font-size: 24px;
+    background-color:#221F1F;
+}
+.footer{
+    background-color:#221F1F;
+    justify-content:center;
+}
+.container-all{
+    height: 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+}
 #rock{
-background-color: brown;
-color: white;
+background-color: #DC9170;
+
 
 }
 
 #scissor{
 background-color: silver;
-color: black;
 }
-
+#paper{
+    border: 2px solid black;
+}
 .win,
-.score,
-.result{
+.score{
 background-color: yellow;
 color: green;
 border: 4px solid black;
@@ -19,8 +47,30 @@ text-align: center;
 margin: 10px;
 }
 
-.container{
+.result-container{
     display: flex;
-    justify-content: center;
+    justify-content:center;
+    gap:16px;
+    padding: 16px;
+    background-color:#DFE3EE;
+    margin-top:2.5vh;
+    font-size: 24px;
+
+}
+
+.container{
+    align-self: center;
+    margin:auto;
+    display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    
+}
+button{
+    font-size: 32px;
+    padding:16px;
+}
+
+.container > button {
+    flex: 1 1 0;
 }
